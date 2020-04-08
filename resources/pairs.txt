@@ -1,0 +1,3 @@
+USD -> RUB
+EUR -> RUB
+RUB -> UAH
