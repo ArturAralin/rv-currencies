@@ -3,7 +3,7 @@ use actix_web::{HttpServer, App, HttpRequest, HttpResponse, middleware, web, dev
 use actix::{Addr};
 use serde_json::json;
 use qstring::QString;
-use crate::currency::{CurrencyProvider, ActualValue};
+use crate::currency::{CurrencyProvider, CurrentValue};
 
 fn ok_json_response(v: serde_json::Value) -> web::HttpResponse {
   HttpResponse::Ok()
@@ -25,7 +25,7 @@ async fn get_currency(
   }
 
   if let Some(provider) = currency_providers.get("USD_RUB") {
-    return match provider.send(ActualValue).await {
+    return match provider.send(CurrentValue).await {
       Ok(v) => {
         ok_json_response(json!({
           "status": "ok",

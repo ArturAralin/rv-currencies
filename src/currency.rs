@@ -56,16 +56,16 @@ impl CurrencyProvider {
   }
 }
 
-pub struct ActualValue;
+pub struct CurrentValue;
 
-impl Message for ActualValue {
+impl Message for CurrentValue {
   type Result = f32;
 }
 
-impl Handler<ActualValue> for CurrencyProvider {
+impl Handler<CurrentValue> for CurrencyProvider {
   type Result = f32;
 
-  fn handle(&mut self, _: ActualValue, _ctx: &mut Context<Self>) -> f32 {
+  fn handle(&mut self, _: CurrentValue, _ctx: &mut Context<Self>) -> f32 {
     self.current_value
   }
 }
